@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/css/bootstrap.css">
+    <link rel="stylesheet" href="static/css/intlTelInput.css">
+
+    <script src="static/js/jquery-2.1.1.min.js"></script>
+    <style>
+        .container{
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <form class="container form-control m-5" id="form">
+        <div class="form-group">
+            <label for="phone" class="fw-bold text-muted fs-5">phone number:</label>
+            <input type="tel" name="phone_number" id="phone" class="form-control">
+        </div>
+        <div class="card-body text-center">
+                <select name="country" class="countries" id="countryId">
+                    <option value="">Select Country</option>
+                </select>
+                <select name="state" class="states" id="stateId">
+                    <option value="">Select State</option>
+                </select>
+                <select name="city" class="cities" id="cityId">
+                    <option value="">Select City</option>
+                </select>
+            </div>
+        <button type="submit" class="btn btn-primary mt-5">contine</button>
+    </form>
+
+    <script src="static/js/bootstrap.js"></script>
+    <script src="//geodata.solutions/includes/countrystatecity.js"></script>
+    <script src="static/js/intlTelInput.js"></script>
+    <script>
+        var input = document.getElementById('phone')
+        var intl = window.intlTelInput(input, {
+      
+            utilsScript: "static/js/utils.js"
+            
+        });
+        var countryData = intl.selectedCountryData['name']
+        var country =document.getElementById('country')
+        country.value = countryData
+        console.log(country)
+
+        form = document.getElementById('form')
+        form.addEventListener('submit', function(event){
+            event.preventDefault()
+            
+        })
+    </script>
+    
+</body>
+</html>
